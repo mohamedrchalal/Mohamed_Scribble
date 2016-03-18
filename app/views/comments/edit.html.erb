@@ -1,5 +1,5 @@
 <h2>Edit Comment</h2>
-<%= form_for @comment do |f| %>
+<%= form_for [@post,@comment] do |f| %>
   <br>
   <br>
   <br>
@@ -11,6 +11,6 @@
   <%= f.submit %>
 <% end %>
 
-<%= form_for [@comment.post, @comment], method: :delete do |f| %>
+<%= form_for [@post, @comment], method: :delete do |f| %>
   <%= f.submit "Delete!", class: "delete" %>
 <% end %>

@@ -1,20 +1,16 @@
-<h2>Posts <a href="/posts/new">(+)</a></h2>
+<h2>New Post <a href="/posts/new">(+)</a></h2>
 
 
 
-  <% @posts.each do |post| %>
-      <%= link_to post.title, post %>
-
-    <br>
-
+  <% @posts.reverse.each do |post| %>
+      <h3> <%= link_to post.title, post %> </h3>
+      <div class="content">
       <p>
       <%= post.content  %>
       </p>
+      </div>
       <br>
+      <div class='user_name'><%= "--- " + post.user_name + " ---"  %></div>
       <br>
-      <p>
-      <%= @comments.post.content %>
-      </p>
 
-    <br>
   <% end %>

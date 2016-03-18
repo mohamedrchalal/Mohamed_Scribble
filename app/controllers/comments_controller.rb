@@ -1,46 +1,48 @@
 class CommentsController < ApplicationController
   # index
+
+
   def index
     @comments = Comment.all
   end
 
   # new
   def new
-    @comment = Comment.new
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.new
   end
 
   # create
   def create
-    @comment = Comment.create!(comment_params)
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.create!(comment_params)
 
-    redirect_to "/comments/#{@comment.id}"
-  end
-
-  #show
-  def show
-    @comment = Comment.find(params[:id])
+    redirect_to @post
   end
 
   # edit
   def edit
-    @comment = Comment.find(params[:id])
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
   end
 
 
   # update
   def update
-    @comment = Comment.find(params[:id])
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
     @comment.update(comment_params)
 
-    redirect_to "/comments/#{@comment.id}"
+    redirect_to @post
   end
 
   # destroy
   def destroy
-    @comment = Comment.find(params[:id])
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
     @comment.destroy
 
-    redirect_to "/comments"
+    redirect_to @post
   end
 
   private

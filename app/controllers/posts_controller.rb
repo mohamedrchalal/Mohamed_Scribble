@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   # index
   def index
     @posts = Post.all
+    @comments = Comment.all
   end
 
   # new
@@ -19,6 +20,7 @@ class PostsController < ApplicationController
   #show
   def show
     @post = Post.find(params[:id])
+
   end
 
   # edit
@@ -40,7 +42,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
 
-    redirect_to "/posts"
+    redirect_to "/posts/:posts_id"
   end
 
   private
