@@ -14195,3 +14195,278 @@ Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8b
 
 
 Started GET "/assets/scrible-22b5fb1e556f78819ada48709ca00b56f52a1e50c00fb713c52f0fc9ccf864ef.png" for ::1 at 2016-03-17 20:38:27 -0400
+
+
+Started PATCH "/posts/4/comments/1" for ::1 at 2016-03-17 20:39:31 -0400
+Processing by CommentsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"powxcwBy1ZNuyOKwvc7ucbGJuYzVnmo0m9YEleLb3JGKgNQGHC9m8h8fyKkuADD2x585+YxnLnaSTGir9x3nTQ==", "comment"=>{"content"=>"nah fam see here chill bruh see here i went to the thingy and they did that"}, "commit"=>"Update Comment", "post_id"=>"4", "id"=>"1"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mComment Load (0.6ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."id" = $2 LIMIT 1[0m  [["post_id", 4], ["id", 1]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (6.4ms)[0m  [1mUPDATE "comments" SET "content" = $1 WHERE "comments"."id" = $2[0m  [["content", "nah fam see here chill bruh see here i went to the thingy and they did that"], ["id", 1]]
+  [1m[35m (2.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/posts/4
+Completed 302 Found in 89ms (ActiveRecord: 10.0ms)
+
+
+Started GET "/posts/4" for ::1 at 2016-03-17 20:39:31 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 4]]
+  Rendered posts/show.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 32ms (Views: 30.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/4" for ::1 at 2016-03-17 20:42:19 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 4]]
+  Rendered posts/show.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 30ms (Views: 28.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.self-ec669178e85929bb1dff36f5f36c3e56dd48827f87f0e11cc3cb1001a0fd5653.css?body=1" for ::1 at 2016-03-17 20:42:19 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-03-17 20:42:19 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-03-17 20:42:19 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-03-17 20:42:19 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-03-17 20:42:19 -0400
+
+
+Started GET "/assets/scrible-22b5fb1e556f78819ada48709ca00b56f52a1e50c00fb713c52f0fc9ccf864ef.png" for ::1 at 2016-03-17 20:42:19 -0400
+
+
+Started GET "/posts/4/comments/new" for ::1 at 2016-03-17 20:42:32 -0400
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"4"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered comments/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 33ms (Views: 30.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/posts/4/comments" for ::1 at 2016-03-17 20:42:46 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qFeAUoMV7/pbysspL8E5YQh7mcDG4PrvlbMJjZIFFcSEW2Unn0hcmyod4TC8D+fmfm0ZtZ8Zvq2cKWWzh8MuGA==", "comment"=>{"content"=>"@Aldo: The only good reason (as opposed to stylistic preference) to explicitly convert the relation to an Array is to avoid a double hit to the database if you iterate (or count or ...) the results twice. For example, if you @a.each { ... } and @a.count when @a is still a relation, you hit the database twice but if @a is an Array then you only hit the database once (when .all is called). Accessing the relation will give you an array but it won't convert the relation to an array in-place. – mu is too short Mar 10 '12 at 22:15 ", "user_name"=>"jason"}, "commit"=>"Create Comment", "post_id"=>"4"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (21.1ms)[0m  INSERT INTO "comments" ("content", "user_name", "post_id") VALUES ($1, $2, $3) RETURNING "id"  [["content", "@Aldo: The only good reason (as opposed to stylistic preference) to explicitly convert the relation to an Array is to avoid a double hit to the database if you iterate (or count or ...) the results twice. For example, if you @a.each { ... } and @a.count when @a is still a relation, you hit the database twice but if @a is an Array then you only hit the database once (when .all is called). Accessing the relation will give you an array but it won't convert the relation to an array in-place. – mu is too short Mar 10 '12 at 22:15 "], ["user_name", "jason"], ["post_id", 4]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/posts/4
+Completed 302 Found in 29ms (ActiveRecord: 22.6ms)
+
+
+Started GET "/posts/4" for ::1 at 2016-03-17 20:42:46 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  Rendered posts/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 32ms (Views: 30.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/4" for ::1 at 2016-03-17 20:43:34 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPost Load (0.8ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  Rendered posts/show.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 34ms (Views: 31.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.self-ec669178e85929bb1dff36f5f36c3e56dd48827f87f0e11cc3cb1001a0fd5653.css?body=1" for ::1 at 2016-03-17 20:43:35 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-03-17 20:43:35 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-03-17 20:43:35 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-03-17 20:43:35 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-03-17 20:43:35 -0400
+
+
+Started GET "/assets/scrible-22b5fb1e556f78819ada48709ca00b56f52a1e50c00fb713c52f0fc9ccf864ef.png" for ::1 at 2016-03-17 20:43:35 -0400
+
+
+Started GET "/posts/4" for ::1 at 2016-03-17 20:43:47 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  Rendered posts/show.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 31ms (Views: 28.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-03-17 20:43:47 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-03-17 20:43:47 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-03-17 20:43:47 -0400
+
+
+Started GET "/assets/scrible-22b5fb1e556f78819ada48709ca00b56f52a1e50c00fb713c52f0fc9ccf864ef.png" for ::1 at 2016-03-17 20:43:47 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-03-17 20:43:47 -0400
+
+
+Started GET "/assets/application.self-ec669178e85929bb1dff36f5f36c3e56dd48827f87f0e11cc3cb1001a0fd5653.css?body=1" for ::1 at 2016-03-17 20:43:47 -0400
+
+
+Started GET "/posts/4" for ::1 at 2016-03-17 20:44:09 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  Rendered posts/show.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 31ms (Views: 28.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.self-ec669178e85929bb1dff36f5f36c3e56dd48827f87f0e11cc3cb1001a0fd5653.css?body=1" for ::1 at 2016-03-17 20:44:09 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-03-17 20:44:09 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-03-17 20:44:09 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-03-17 20:44:09 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-03-17 20:44:09 -0400
+
+
+Started GET "/assets/scrible-22b5fb1e556f78819ada48709ca00b56f52a1e50c00fb713c52f0fc9ccf864ef.png" for ::1 at 2016-03-17 20:44:09 -0400
+
+
+Started GET "/posts/4" for ::1 at 2016-03-17 20:44:25 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  Rendered posts/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 27ms (Views: 24.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-03-17 20:44:25 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-03-17 20:44:25 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-03-17 20:44:25 -0400
+
+
+Started GET "/assets/application.self-ec669178e85929bb1dff36f5f36c3e56dd48827f87f0e11cc3cb1001a0fd5653.css?body=1" for ::1 at 2016-03-17 20:44:25 -0400
+
+
+Started GET "/assets/scrible-22b5fb1e556f78819ada48709ca00b56f52a1e50c00fb713c52f0fc9ccf864ef.png" for ::1 at 2016-03-17 20:44:25 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-03-17 20:44:25 -0400
+
+
+Started GET "/assets/scrible-22b5fb1e556f78819ada48709ca00b56f52a1e50c00fb713c52f0fc9ccf864ef.png" for ::1 at 2016-03-17 20:44:25 -0400
+
+
+Started GET "/posts/4" for ::1 at 2016-03-17 20:44:30 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mComment Load (0.5ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  Rendered posts/show.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 26ms (Views: 24.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-03-17 20:44:30 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-03-17 20:44:31 -0400
+
+
+Started GET "/assets/application.self-ec669178e85929bb1dff36f5f36c3e56dd48827f87f0e11cc3cb1001a0fd5653.css?body=1" for ::1 at 2016-03-17 20:44:31 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-03-17 20:44:31 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-03-17 20:44:31 -0400
+
+
+Started GET "/assets/scrible-22b5fb1e556f78819ada48709ca00b56f52a1e50c00fb713c52f0fc9ccf864ef.png" for ::1 at 2016-03-17 20:44:31 -0400
+
+
+Started GET "/posts/4" for ::1 at 2016-03-17 20:44:45 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  Rendered posts/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 27ms (Views: 25.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-03-17 20:44:46 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-03-17 20:44:46 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-03-17 20:44:46 -0400
+
+
+Started GET "/assets/application.self-ec669178e85929bb1dff36f5f36c3e56dd48827f87f0e11cc3cb1001a0fd5653.css?body=1" for ::1 at 2016-03-17 20:44:46 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-03-17 20:44:46 -0400
+
+
+Started GET "/assets/scrible-22b5fb1e556f78819ada48709ca00b56f52a1e50c00fb713c52f0fc9ccf864ef.png" for ::1 at 2016-03-17 20:44:46 -0400
+
+
+Started GET "/posts/4" for ::1 at 2016-03-17 20:45:23 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  Rendered posts/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 62ms (Views: 59.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.self-dd6c4ab122edf6163689b2734d8932f7e662e36b846802cb6ed28feba698d751.css?body=1" for ::1 at 2016-03-17 20:45:23 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-03-17 20:45:23 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-03-17 20:45:23 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-03-17 20:45:23 -0400
+
+
+Started GET "/assets/scrible-22b5fb1e556f78819ada48709ca00b56f52a1e50c00fb713c52f0fc9ccf864ef.png" for ::1 at 2016-03-17 20:45:23 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-03-17 20:45:24 -0400
+
+
+Started GET "/" for ::1 at 2016-03-17 20:45:43 -0400
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 27ms (Views: 25.2ms | ActiveRecord: 0.5ms)

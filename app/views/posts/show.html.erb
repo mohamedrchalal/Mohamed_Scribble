@@ -6,19 +6,21 @@
   </p>
 
 </div>
+<br>
 <div class='user_name'><%= '--- ' + @post.user_name + ' ---' %></div>
-<h3>Comment <%= link_to "(+)", new_post_comment_path(@post) %></h3>
+<h3>New Comment <%= link_to "(+)", new_post_comment_path(@post) %></h3>
 
 
   <% @post.comments.each do |comment| %>
+
 <div class="comment_content">
   <p>
-      <%= comment.content %> <%=link_to "(edit)", edit_post_comment_path(@post, comment) %>
+      <%= comment.content %>
   </p>
 </div>
-
-      <div class='user_name'><%= '--- ' + comment.user_name + ' ---'%></div>
-
+<br>
+      <div class='user_name'><%= '--- ' + comment.user_name + ' --- '%><%=link_to "(edit)", edit_post_comment_path(@post, comment) %></div>
+<br>
 
   <% end %>
 </ul>
